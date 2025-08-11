@@ -7,10 +7,7 @@
     <div class="col-md-8">
         <div class="card shadow">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="mb-0">Detail Penerima</h5>
-                <span class="badge {{ $recipient->is_distributed ? 'bg-success' : 'bg-warning' }}">
-                    {{ $recipient->distribution_status }}
-                </span>
+                <h5 class="mb-6">Detail Penerima</h5>
             </div>
 
             <div class="card-body py-2 px-3">
@@ -61,14 +58,6 @@
                         <a href="{{ route('recipients.qr-code', $recipient) }}" class="btn btn-info" target="_blank">
                             <i class="fas fa-qrcode me-2"></i>Lihat QR
                         </a>
-                        @if($recipient->is_distributed)
-                            <a href="{{ route('recipients.receipt', $recipient) }}" class="btn btn-success">
-                                <i class="fas fa-file-pdf me-2"></i>Cetak Bukti
-                            </a>
-                            <a href="{{ route('recipients.signature', $recipient) }}" class="btn btn-warning">
-                                <i class="fas fa-signature me-2"></i>Form TTD
-                            </a>
-                        @endif
                     </div>
                 </div>
             </div>

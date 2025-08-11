@@ -27,27 +27,34 @@ Registrasi
             </form>
 
             <!-- Hasil scan -->
-            <div id="result" class="mt-4" style="display: none;">
-                <h6 class="fw-bold mb-3">Data Penerima</h6>
-                <div class="table-responsive">
-                    <table class="table table-bordered table-sm mb-0" style="width: auto; min-width: 250px;">
-                        <tbody>
-                            <tr>
-                                <th>Nama</th>
-                                <td id="child_name"></td>
-                            </tr>
-                            <tr>
-                                <th>Nama Sekolah</th>
-                                <td id="school_name"></td>
-                            </tr>
-                            <tr>
-                                <th>Alamat</th>
-                                <td id="address"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <button id="confirmBtn" class="btn btn-success btn-sm mt-3">✅ Registrasikan</button>
+<div id="result" class="mt-4" style="display: none;">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-success text-white py-2">
+            <h6 class="mb-0 fw-bold">📋 Data Penerima</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-sm align-middle mb-0">
+                    <tbody>
+                        <tr>
+                            <th class="bg-light" style="width: 150px;">Nama</th>
+                            <td id="child_name"></td>
+                        </tr>
+                        <tr>
+                            <th class="bg-light">Nama Sekolah</th>
+                            <td id="school_name"></td>
+                        </tr>
+                        <tr>
+                            <th class="bg-light">Alamat</th>
+                            <td id="address"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-end mt-3">
+                <button id="confirmBtn" class="btn btn-success btn-sm px-3">
+                    ✅ Registrasikan
+                </button>
             </div>
         </div>
     </div>
@@ -56,12 +63,13 @@ Registrasi
 <style>
 .table th {
     white-space: nowrap;
-    padding: 4px 8px;
     font-size: 0.9rem;
 }
 .table td {
-    padding: 4px 8px;
     font-size: 0.9rem;
+}
+.card-header {
+    font-size: 1rem;
 }
 </style>
 
@@ -106,6 +114,7 @@ document.getElementById('verifyForm').addEventListener('submit', function(e) {
     });
 });
 </script>
+
 
 
 @endsection

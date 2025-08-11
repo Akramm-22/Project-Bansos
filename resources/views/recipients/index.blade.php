@@ -19,7 +19,8 @@
                         <tr>
                             <th>QR Code</th>
                             <th>Nama Anak</th>
-                            <th>Nama Orang Tua</th>
+                            <th>Nama Ayah</th>
+                            <th>Nama Ibu</th>
                             <th>Sekolah</th>
                             <th>Kelas</th>
                             <th>Status</th>
@@ -33,7 +34,8 @@
                                     <span class="badge bg-primary">{{ $recipient->qr_code }}</span>
                                 </td>
                                 <td>{{ $recipient->child_name }}</td>
-                                <td>{{ $recipient->parent_name }}</td>
+                                <td>{{ $recipient->Ayah_name }}</td>
+                                <td>{{ $recipient->Ibu_name }}</td>
                                 <td>{{ $recipient->school_name }}</td>
                                 <td>{{ $recipient->class }}</td>
                                 <style>
@@ -95,12 +97,6 @@
                                             class="btn btn-sm btn-secondary" target="_blank">
                                             <i class="fas fa-qrcode"></i>
                                         </a>
-                                        @if ($recipient->is_distributed)
-                                            <a href="{{ route('recipients.receipt', $recipient) }}"
-                                                class="btn btn-sm btn-success">
-                                                <i class="fas fa-file-pdf"></i>
-                                            </a>
-                                        @endif
                                         <form action="{{ route('recipients.destroy', $recipient) }}" method="POST"
                                             class="d-inline" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
                                             @csrf
