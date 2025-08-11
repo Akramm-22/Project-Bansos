@@ -113,6 +113,55 @@ class RecipientController extends Controller
         return view('recipients.scan');
     }
 
+    // public function printAllQrCodes()
+    // {
+    //     $recipients = Recipient::all();
+
+    //     if ($recipients->isEmpty()) {
+    //         return back()->with('error', 'Tidak ada data penerima.');
+    //     }
+
+    //     // Folder sementara untuk simpan PDF
+    //     $tempDir = storage_path('app/temp_qr_codes');
+    //     if (!file_exists($tempDir)) {
+    //         mkdir($tempDir, 0777, true);
+    //     }
+
+    //     $zipFile = storage_path('app/qr_codes_all.zip');
+    //     $zip = new ZipArchive;
+    //     if ($zip->open($zipFile, ZipArchive::CREATE | ZipArchive::OVERWRITE) === TRUE) {
+
+    //         foreach ($recipients as $recipient) {
+    //             $encryptedCode = base64_encode($recipient->qr_code . '|' . $recipient->id);
+
+    //             // Generate PDF
+    //             $pdf = Pdf::loadView('recipients.qr-print', compact('recipient', 'encryptedCode'));
+
+    //             $pdfFileName = 'qr-code-' . $recipient->qr_code . '.pdf';
+    //             $pdfPath = $tempDir . '/' . $pdfFileName;
+
+    //             file_put_contents($pdfPath, $pdf->output());
+
+    //             // Masukkan ke ZIP
+    //             $zip->addFile($pdfPath, $pdfFileName);
+    //         }
+
+    //         $zip->close();
+    //     } else {
+    //         return back()->with('error', 'Gagal membuat file ZIP.');
+    //     }
+
+    //     // Hapus file PDF sementara
+    //     foreach (glob($tempDir . '/*.pdf') as $file) {
+    //         unlink($file);
+    //     }
+    //     rmdir($tempDir);
+
+    //     // Download ZIP
+    //     return response()->download($zipFile)->deleteFileAfterSend(true);
+    // }
+
+
     public function verifyQr(Request $request)
     {
         $request->validate([
@@ -138,15 +187,10 @@ class RecipientController extends Controller
                 'recipient' => $recipient,
                 'status' => $recipient->distribution_status
             ]);
-
         } catch (\Exception $e) {
             return response()->json(['error' => 'QR Code tidak valid: ' . $e->getMessage()], 400);
         }
     }
-
-
-
-
 
     public function distribute(Request $request, Recipient $recipient)
     {
@@ -263,7 +307,6 @@ class RecipientController extends Controller
                 'success' => true,
                 'recipient' => $recipient
             ]);
-
         } catch (\Exception $e) {
             return response()->json(['error' => 'QR Code tidak valid: ' . $e->getMessage()], 400);
         }
@@ -295,11 +338,8 @@ class RecipientController extends Controller
                 'message' => 'Registrasi berhasil disimpan',
                 'recipient' => $recipient
             ]);
-
         } catch (\Exception $e) {
             return response()->json(['error' => 'Gagal memperbarui registrasi: ' . $e->getMessage()], 400);
         }
     }
-
-
 }

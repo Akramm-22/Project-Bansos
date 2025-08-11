@@ -26,34 +26,34 @@ Registrasi
                 </button>
             </form>
 
-            <!-- Hasil scan -->
+           <!-- Hasil scan -->
 <div id="result" class="mt-4" style="display: none;">
-    <div class="card shadow-sm border-0">
+    <div class="card shadow-sm border border-dark">
         <div class="card-header bg-success text-white py-2">
-            <h6 class="mb-0 fw-bold">📋 Data Penerima</h6>
+            <h6 class="mb-0 fw-bold">📋 Informasi Data Penerima</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered table-sm align-middle mb-0">
+                <table class="table table-bordered table-sm align-middle mb-0 border-dark">
                     <tbody>
                         <tr>
-                            <th class="bg-light" style="width: 150px;">Nama</th>
-                            <td id="child_name"></td>
+                            <th class="bg-light border-dark" style="width: 150px;">Nama Lengkap</th>
+                            <td id="child_name" class="border-dark"></td>
                         </tr>
                         <tr>
-                            <th class="bg-light">Nama Sekolah</th>
-                            <td id="school_name"></td>
+                            <th class="bg-light border-dark">Sekolah</th>
+                            <td id="school_name" class="border-dark"></td>
                         </tr>
                         <tr>
-                            <th class="bg-light">Alamat</th>
-                            <td id="address"></td>
+                            <th class="bg-light border-dark">Alamat Lengkap</th>
+                            <td id="address" class="border-dark"></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <div class="text-end mt-3">
                 <button id="confirmBtn" class="btn btn-success btn-sm px-3">
-                    ✅ Registrasikan
+                    ✅ Konfirmasi Registrasi
                 </button>
             </div>
         </div>
@@ -70,6 +70,9 @@ Registrasi
 }
 .card-header {
     font-size: 1rem;
+}
+.card {
+    border-width: 2px !important;
 }
 </style>
 
@@ -114,6 +117,7 @@ document.getElementById('verifyForm').addEventListener('submit', function(e) {
     });
 });
 </script>
+
 
 
 

@@ -10,6 +10,9 @@
     </div>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <a href="{{ route('recipients.printAll') }}" class="btn btn-success btn-sm me-2">
+                <i class="fas fa-download"></i> Download Semua QR (ZIP)
+            </a>
 
     <div class="card shadow">
         <div class="card-body">
@@ -92,10 +95,6 @@
                                         </a>
                                         <a href="{{ route('recipients.edit', $recipient) }}" class="btn btn-sm btn-warning">
                                             <i class="fas fa-edit"></i>
-                                        </a>
-                                        <a href="{{ route('recipients.qr-code', $recipient) }}"
-                                            class="btn btn-sm btn-secondary" target="_blank">
-                                            <i class="fas fa-qrcode"></i>
                                         </a>
                                         <form action="{{ route('recipients.destroy', $recipient) }}" method="POST"
                                             class="d-inline" onsubmit="return confirm('Yakin ingin menghapus data ini?')">

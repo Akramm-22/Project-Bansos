@@ -32,6 +32,8 @@ Route::get('/', function () {
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/home', [DashboardController::class, 'index'])->name('home');
+    Route::get('/recipients/print-all', [RecipientController::class, 'printAllQrCodes'])->name('recipients.printAll');
+    Route::resource('recipients', RecipientController::class);
 
     Route::resource('recipients', RecipientController::class);
     Route::get('/recipients/{recipient}/qr-code', [RecipientController::class, 'generateQrCode'])->name('recipients.qr-code');
@@ -59,6 +61,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 Auth::routes();
 
 Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+
 
 Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/user', [UserController::class, 'index'])->name('userdashboard');
